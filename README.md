@@ -25,6 +25,8 @@ The long-term goal is to experiment with self-hosted services such as:
 * Created GitHub account ✅
 * Downloaded Ubuntu Server ISO ✅
 * Prepared USB installation ✅
+* Creating a bootalbe USB-Drive using Rufus
+    * checking whether I need GPT or MBR on my older laptop in windows-> disk management -> disk 0 -> properties -> volumes ->       Partition stlye: GPT (in my case) ✅
 * Installed Ubuntu Server ✅
 
 ## Installation
