@@ -30,6 +30,7 @@ The long-term goal is to experiment with self-hosted services such as:
 * Installed Ubuntu Server ✅
    * wlan configuration -> DHCPv4 for now -> automatic ip address
 * first time login using username + password
+* installing network manager
 
 ## Installation
 
@@ -41,6 +42,6 @@ System booted successfully.
 
 ## Notes / Problems
 
-   * first problem. no respond from ping google.com or ping 8.8.8.8 
+   * first problem. no respond from ping google.com or ping 8.8.8.8 -> no wifi driver detected (check via ip link)
    * 
 
