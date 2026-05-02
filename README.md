@@ -28,6 +28,8 @@ The long-term goal is to experiment with self-hosted services such as:
 * Creating a bootalbe USB-Drive using Rufus
     * checking whether I need GPT or MBR on my older laptop in windows-> disk management -> disk 0 -> properties -> volumes ->       Partition stlye: GPT (in my case) ✅
 * Installed Ubuntu Server ✅
+   * wlan configuration -> DHCPv4 for now -> automatic ip address
+* first time login using username + password
 
 ## Installation
 
@@ -39,4 +41,6 @@ System booted successfully.
 
 ## Notes / Problems
 
-No issues so far.
+   * checking my mac address during installation: first part is manufacturer and second part is device
+   * 
+
