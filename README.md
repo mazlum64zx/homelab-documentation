@@ -22,16 +22,19 @@ The long-term goal is to experiment with self-hosted services such as:
 
 ## Current Progress
 
-* Created GitHub account
-* Downloaded Ubuntu Server ISO
-* Prepared USB installation
+* Created GitHub account ✅
+* Downloaded Ubuntu Server ISO ✅
+* Prepared USB installation ✅
+* Installed Ubuntu Server ✅
 
-## Next Steps
+## Installation
 
-* Install Ubuntu Server
-* Enable SSH
-* Test connection from main PC
+Ubuntu Server was installed using a bootable USB stick.
+
+### Result
+
+System booted successfully.
 
 ## Notes / Problems
 
-I will document any issues and how I solved them here.
+No issues so far.
