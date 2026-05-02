@@ -41,6 +41,6 @@ System booted successfully.
 
 ## Notes / Problems
 
-   * checking my mac address during installation: first part is manufacturer and second part is device
+   * first problem. no respond from ping google.com or ping 8.8.8.8 
    * 
 
