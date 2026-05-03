@@ -52,7 +52,12 @@ The long-term goal is to experiment with self-hosted services such as:
    After applying the corrected configuration, the system successfully obtained an IPv4 address on boot, and SSH               connections worked normally.
 
 * installed tailscale on linux server and laptop for remote use
-* installed casaOS
+* installed casaOS -> connection succesful
+* installed jellyfin -> cannot access server. -> checking sudo docker ps in terminal for which container are currently on
+     -> starting casaOS via serverIP:8097(Port) instead of only ServerIP and now I can access JellyFinn
+     
+     
+
 
 ## Installation
 
@@ -93,6 +98,6 @@ The server is successfully connected to the network via WiFi and is reachable us
 
 ## Notes / Problems
 
-   *
+   *cannot use file sharing in casa -> trying to install samba with sudo apt install samba -y -> samba already installed
    * 
 
