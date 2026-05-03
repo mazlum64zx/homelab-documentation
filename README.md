@@ -51,6 +51,8 @@ The long-term goal is to experiment with self-hosted services such as:
    Result
    After applying the corrected configuration, the system successfully obtained an IPv4 address on boot, and SSH               connections worked normally.
 
+* installed tailscale on linux server and laptop for remote use
+
 ## Installation
 
 Ubuntu Server was installed using a bootable USB stick.
