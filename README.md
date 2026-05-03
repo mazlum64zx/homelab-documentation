@@ -65,6 +65,8 @@ The long-term goal is to experiment with self-hosted services such as:
       sudo systemctl disable systemd-resolved
       sudo rm /etc/resolv.conf
       echo "nameserver 1.1.1.1" | sudo tee /etc/resolv.conf
+     Client & Pi-hole configuration:
+      Disabled IPv6 on the client to prevent DNS bypass and manually set the IPv4 DNS server to the Pi-hole IP                    (192.168.0.216). Flushed and renewed the DNS configuration to apply changes. Additionally, configured the Pi-hole           container with FTLCONF_dns_listeningMode=all to allow DNS queries from the local network.
      
      
 
