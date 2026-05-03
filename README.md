@@ -55,6 +55,16 @@ The long-term goal is to experiment with self-hosted services such as:
 * installed casaOS -> connection succesful
 * installed jellyfin -> cannot access server. -> checking sudo docker ps in terminal for which container are currently on
      -> starting casaOS via serverIP:8097(Port) instead of only ServerIP and now I can access JellyFinn
+* installing pi hole -> not working because port 53 isn't available
+     checking if my server already uses port 53 -> "sudo lsof -i :53"
+     Port 53 can only be bound by one service at a time. On this system, systemd-resolved is already listening on port 53,       which prevents Pi-hole from starting its DNS service.
+     free port 53 and keep DNS working):
+      Stop and disable systemd-resolved (it occupies port 53), then replace the dynamic resolver config with a static DNS       server so the system keeps internet access.
+      sudo cp /etc/resolv.conf /etc/resolv.conf.backup
+      sudo systemctl stop systemd-resolved
+      sudo systemctl disable systemd-resolved
+      sudo rm /etc/resolv.conf
+      echo "nameserver 1.1.1.1" | sudo tee /etc/resolv.conf
      
      
 
