@@ -32,6 +32,24 @@ The long-term goal is to experiment with self-hosted services such as:
    * wlan configuration -> DHCPv4 for now -> automatic ip address
 * first time login using username + password
 * to ensure consistent network access, a static IP address was assigned to the server using the router's DHCP reservation        feature. the router maps the server's MAC address to a fixed IP address, ensuring that the server always receives the same     IP when connecting to the network.
+* using the command "sudo nano /etc/systemd/login.conf"  -> go to HandleLidSwitch=suspend and delete the "#" also from the
+     HandleLidSwitchExternalPower=suspend, also HandleLidSwitch=Docked=ignore, as well as LidlSwitchIgnoreInhibited=yes.
+  Then we change HandleLidSwitch=suspend to HandleLidSwitch=ignore, HandleLidSwitchExternalPower=suspend to    HandleLidSwitchExternalPower=ignore and LidlSwitchIgnoreInhibited=yes to -> LidlSwitchIgnoreInhibited=no
+     * What we just did is to ensure, that the laptop is still being powered on even though we close the lit.
+* connection in win11 terminal via ssh is failed -> the problem was my server didnt have an IPv4 Address asigned.
+  -> fix via command "sudo apt install isc-dhcp-client", if I use "ip a" I know get a dedicated IPv4 and the
+     connection via terminal to my server is now successful
+* after sudo reboot the IPv4 is gone again and I can't connect to my server again -> trying to research a permanent fix
+  ->This was caused by an incorrect Netplan configuration:
+      dhcp4: true was placed in the wrong section (under WiFi or globally)
+      YAML indentation was invalid
+      As a result, DHCP was not applied on boot
+*The fix was to disable the Wi-Fi configuration and ensure DHCP was correctly set for the Ethernet interface.
+   Key change:
+   ethernets:  enp0s31f6:    dhcp4: true
+
+   Result
+   After applying the corrected configuration, the system successfully obtained an IPv4 address on boot, and SSH               connections worked normally.
 
 ## Installation
 
