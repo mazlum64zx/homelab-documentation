@@ -73,6 +73,7 @@ The long-term goal is to experiment with self-hosted services such as:
           ->selecting operating system: debian , 64bit
           ->installing cloud flare on my server via command listed on the website and storing my token carefully.
           ->In the Cloudflare Zero Trust dashboard, I created a new cloudflared tunnel and configured a public hostname. I             assigned a subdomain and linked it to my domain. For the service configuration, I selected SSH and pointed it to            localhost:22, which connects the tunnel directly to the SSH service running on my server. This setup allows                 secure remote access to the server through Cloudflare.
+          *In the Cloudflare Zero Trust dashboard, I created a self-hosted application for SSH access. I configured a                  public hostname using a subdomain (e.g., ssh.mazlum.uk) and enabled browser-based SSH rendering. I then created             an access policy to allow only my email address. After saving the configuration, I was able to securely access              my server via SSH directly through the browser using the Cloudflare tunnel.
 
              
      
