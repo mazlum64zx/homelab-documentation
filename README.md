@@ -67,6 +67,14 @@ The long-term goal is to experiment with self-hosted services such as:
       echo "nameserver 1.1.1.1" | sudo tee /etc/resolv.conf
      Client & Pi-hole configuration:
       Disabled IPv6 on the client to prevent DNS bypass and manually set the IPv4 DNS server to the Pi-hole IP                    (192.168.0.216). Flushed and renewed the DNS configuration to apply changes. Additionally, configured the Pi-hole           container with FTLCONF_dns_listeningMode=all to allow DNS queries from the local network.
+  * I initially planned to use Tailscale for remote access, but this was not possible due to missing administrator                privileges on my training laptop, which prevented me from installing the software. As an alternative, I switched to         Cloudflare. I created an account and purchased a domain for $5. The goal is to set up remote access to my server            through Cloudflare, allowing me to connect from my training laptop and continue working on my server during                 free time. At this point, I am in the setup phase of this configuration.
+
+       The first step is to create a tunnel. Navigate in the Cloudflare dashboard to Zero Trust → Networks → Overview →            Manage Tunnels → Add a Tunnel (Create new cloudflared Tunnel)
+          ->selecting operating system: debian , 64bit
+          ->installing cloud flare on my server via command listed on the website and storing my token carefully.
+          ->In the Cloudflare Zero Trust dashboard, I created a new cloudflared tunnel and configured a public hostname. I             assigned a subdomain and linked it to my domain. For the service configuration, I selected SSH and pointed it to            localhost:22, which connects the tunnel directly to the SSH service running on my server. This setup allows                 secure remote access to the server through Cloudflare.
+
+             
      
      
 
