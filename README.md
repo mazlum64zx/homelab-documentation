@@ -74,6 +74,22 @@ The long-term goal is to experiment with self-hosted services such as:
           ->installing cloud flare on my server via command listed on the website and storing my token carefully.
           ->In the Cloudflare Zero Trust dashboard, I created a new cloudflared tunnel and configured a public hostname. I             assigned a subdomain and linked it to my domain. For the service configuration, I selected SSH and pointed it to            localhost:22, which connects the tunnel directly to the SSH service running on my server. This setup allows                 secure remote access to the server through Cloudflare.
           *In the Cloudflare Zero Trust dashboard, I created a self-hosted application for SSH access. I configured a                  public hostname using a subdomain (e.g., ssh.mazlum.uk) and enabled browser-based SSH rendering. I then created             an access policy to allow only my email address. After saving the configuration, I was able to securely access              my server via SSH directly through the browser using the Cloudflare tunnel.
+    *After successfully setting up SSH access through Cloudflare, the next step was to access additional applications and        web interfaces running in my local network. These services are hosted on my server with the local IP address                192.168.0.216.
+
+      Since direct access to a private IP address from outside the network is not possible, access had to be configured            through Cloudflare.
+
+      To achieve this, I used the existing tunnel in the Cloudflare Zero Trust dashboard. I navigated to Networks →                Tunnels,       selected my tunnel, and then created a new route under Public Hostnames (Published application                routes).
+
+      I configured the application as follows:
+
+       Subdomain: casa.mazlum.uk
+       Service type: HTTP
+      Target address: localhost:80
+
+      Since the CasaOS service is running directly on my server and is accessible via port 80, localhost in this context          refers to the same machine where the Cloudflare Tunnel (cloudflared) is running.
+
+      After saving the configuration, the web interface was successfully accessible via:
+      https://casa.mazlum.uk
 
              
      
