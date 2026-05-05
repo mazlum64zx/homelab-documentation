@@ -91,6 +91,23 @@ The long-term goal is to experiment with self-hosted services such as:
       After saving the configuration, the web interface was successfully accessible via:
       https://casa.mazlum.uk
 
+   *With the Cloudflare Tunnel configured, I was now able to access my server’s web interface from any device with an internet connection, regardless of the network I was in. This means I could manage files and share content through the web interface without being limited to my local network.
+
+After successfully accessing the CasaOS web interface via my domain, I encountered the next issue. When I clicked on installed applications such as Plex, I received a DNS error.
+
+This behavior is expected: by default, applications like Plex are configured to use the server’s local IP address (e.g., 192.168.0.216) and a specific port (e.g., 32400). While this works within the local network, it fails when accessing the service remotely, since private IP addresses are not reachable from outside the network.
+
+To resolve this, I created a new application route in Cloudflare. Under Networks → Tunnels → Public Hostnames, I added a new route with the following configuration:
+
+Subdomain: plex.mazlum.uk
+Service type: HTTP
+Target address: http://localhost:32400
+
+This configuration allows Cloudflare to route external requests for plex.mazlum.uk through the tunnel directly to the Plex service running on the server.
+
+After that, I updated the Plex Web UI settings to use plex.mazlum.uk instead of the local IP address and removed the port from the URL.
+
+This is necessary because Cloudflare only exposes standard HTTP/HTTPS ports (such as 80 and 443) to the public. If a custom port (e.g., 32400) is included in the URL, the browser will attempt to establish a direct connection to that port over the internet. Since this port is not supported or exposed by Cloudflare, the request will fail and will not be routed through the tunnel. By removing the port from the URL, all traffic is sent through Cloudflare on standard ports and then internally forwarded to the correct service via the tunnel.
              
      
      
